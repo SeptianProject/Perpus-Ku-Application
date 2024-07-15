@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perpus_digital/controllers/onboarding_controller.dart';
-import 'package:perpus_digital/views/onboarding-screen/started_page.dart';
-import 'package:flutter/services.dart';
+import 'package:perpus_digital/views/onboarding-screen/signin_page.dart';
 
 class OnBoardingPageScreen extends StatefulWidget {
   const OnBoardingPageScreen({super.key});
@@ -33,6 +32,42 @@ class _OnBoardingPageScreenState extends State<OnBoardingPageScreen> {
       backgroundColor: const Color(0xffFEFEFE),
       body: Column(
         children: [
+          const SizedBox(
+            height: 30,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                onPressed: () {
+                  _pageIndex == content.length - 1
+                      ? Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()))
+                      : null;
+                },
+                style: ButtonStyle(
+                  elevation: const WidgetStatePropertyAll(0),
+                  shadowColor: WidgetStateColor.transparent,
+                  splashFactory: _pageIndex == content.length - 1
+                      ? InkSplash.splashFactory
+                      : NoSplash.splashFactory,
+                ),
+                child: Text(
+                  _pageIndex == content.length - 1 ? "Lewati" : "",
+                  style: TextStyle(
+                      color: _pageIndex == content.length - 1
+                          ? const Color(0xff5A7BFA)
+                          : Colors.transparent,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.6),
+                ),
+              ),
+              const SizedBox(width: 20),
+            ],
+          ),
           Expanded(
               child: PageView.builder(
                   physics: const BouncingScrollPhysics(),
@@ -49,56 +84,56 @@ class _OnBoardingPageScreenState extends State<OnBoardingPageScreen> {
                         description: content[index].description,
                       ))),
           Padding(
-            padding: const EdgeInsets.only(bottom: 50),
+            padding: const EdgeInsets.only(bottom: 100),
             child: Row(
               children: [
-                _pageIndex < content.length - 2
-                    ? const SizedBox()
-                    : const SizedBox(
-                        width: 40,
-                      ),
-                ElevatedButton(
-                    onPressed: () {
-                      _pageIndex < content.length - 2
-                          ? SystemNavigator.pop()
-                          : _pageController.previousPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease);
-                    },
-                    style: ElevatedButton.styleFrom(
-                        animationDuration: const Duration(milliseconds: 500),
-                        padding: _pageIndex < content.length - 2
-                            ? const EdgeInsets.fromLTRB(15, 12, 12, 12)
-                            : const EdgeInsets.fromLTRB(20, 12, 12, 12),
-                        shape: _pageIndex < content.length - 2
-                            ? const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(25),
-                                    bottomRight: Radius.circular(25)))
-                            : const CircleBorder(),
-                        backgroundColor: const Color(0xffFEFEFE),
-                        side: const BorderSide(
-                            color: Color(0xff5A7BFA), width: 2),
-                        elevation: 0),
-                    child: _pageIndex < content.length - 2
-                        ? const Row(
-                            children: [
-                              Icon(Icons.arrow_back_ios,
-                                  size: 15, color: Color(0xff5A7BFA)),
-                              SizedBox(width: 8),
-                              Text('Keluar',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                      color: Color(0xff5A7BFA))),
-                            ],
-                          )
-                        : const Icon(
-                            Icons.arrow_back_ios,
-                            size: 20,
-                            weight: 40,
-                            color: Color(0xff5A7BFA),
-                          )),
+                // _pageIndex < content.length - 2
+                //     ? const SizedBox()
+                //     : const SizedBox(
+                //         width: 40,
+                //       ),
+                // ElevatedButton(
+                //     onPressed: () {
+                //       _pageIndex < content.length - 2
+                //           ? SystemNavigator.pop()
+                //           : _pageController.previousPage(
+                //               duration: const Duration(milliseconds: 500),
+                //               curve: Curves.ease);
+                //     },
+                //     style: ElevatedButton.styleFrom(
+                //         animationDuration: const Duration(milliseconds: 500),
+                //         padding: _pageIndex < content.length - 2
+                //             ? const EdgeInsets.fromLTRB(15, 12, 12, 12)
+                //             : const EdgeInsets.fromLTRB(20, 12, 12, 12),
+                //         shape: _pageIndex < content.length - 2
+                //             ? const RoundedRectangleBorder(
+                //                 borderRadius: BorderRadius.only(
+                //                     topRight: Radius.circular(25),
+                //                     bottomRight: Radius.circular(25)))
+                //             : const CircleBorder(),
+                //         backgroundColor: const Color(0xffFEFEFE),
+                //         side: const BorderSide(
+                //             color: Color(0xff5A7BFA), width: 2),
+                //         elevation: 0),
+                //     child: _pageIndex < content.length - 2
+                //         ? const Row(
+                //             children: [
+                //               Icon(Icons.arrow_back_ios,
+                //                   size: 15, color: Color(0xff5A7BFA)),
+                //               SizedBox(width: 8),
+                //               Text('Keluar',
+                //                   style: TextStyle(
+                //                       fontWeight: FontWeight.w600,
+                //                       fontSize: 18,
+                //                       color: Color(0xff5A7BFA))),
+                //             ],
+                //           )
+                //         : const Icon(
+                //             Icons.arrow_back_ios,
+                //             size: 20,
+                //             weight: 40,
+                //             color: Color(0xff5A7BFA),
+                //           )),
                 const Spacer(),
                 ...List.generate(
                     content.length,
@@ -109,57 +144,86 @@ class _OnBoardingPageScreenState extends State<OnBoardingPageScreen> {
                           ),
                         )),
                 const Spacer(),
-                ElevatedButton(
-                  onPressed: () {
-                    _pageIndex == content.length - 1
-                        ? Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const StartedPage()))
-                        : _pageController.nextPage(
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.ease);
-                  },
-                  style: ElevatedButton.styleFrom(
-                      animationDuration: const Duration(milliseconds: 500),
-                      padding: _pageIndex == content.length - 1
-                          ? const EdgeInsets.fromLTRB(20, 12, 12, 12)
-                          : const EdgeInsets.fromLTRB(15, 12, 12, 12),
-                      shape: _pageIndex == content.length - 1
-                          ? const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(25),
-                                  bottomLeft: Radius.circular(25)))
-                          : const CircleBorder(),
-                      backgroundColor: const Color(0xff5A7BFA)),
-                  child: _pageIndex == content.length - 1
-                      ? const Row(
-                          children: [
-                            Text('Lanjut',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                    color: Color(0xfffefefe))),
-                            SizedBox(width: 8),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 15,
-                              color: Color(0xfffefefe),
-                            )
-                          ],
-                        )
-                      : const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 20,
-                          weight: 100,
-                          color: Color(0xfffefefe),
-                        ),
-                ),
-                _pageIndex == content.length - 1
-                    ? const SizedBox()
-                    : const SizedBox(
-                        width: 40,
-                      )
+                // _pageIndex == content.length - 1
+                //     ? ElevatedButton(
+                //         onPressed: () {
+                //           Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                   builder: (context) => LoginPage()));
+                //         },
+                //         style: ElevatedButton.styleFrom(
+                //           animationDuration: const Duration(milliseconds: 500),
+                //           padding: const EdgeInsets.fromLTRB(20, 12, 12, 12),
+                //           shape: const RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.only(
+                //                 topLeft: Radius.circular(25),
+                //                 bottomLeft: Radius.circular(25)),
+                //           ),
+                //           backgroundColor: const Color(0xff5A7BFA),
+                //         ),
+                //         child: const Text(
+                //           "Lanjutkan",
+                //           style: TextStyle(
+                //             fontWeight: FontWeight.w600,
+                //             fontSize: 18,
+                //             color: Color(0xfffefefe),
+                //           ),
+                //         ),
+                //       )
+                //     : const SizedBox()
+
+                // ElevatedButton(
+                //   onPressed: () {
+                //     _pageIndex == content.length - 1
+                //         ? Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (context) => const StartedPage()))
+                //         : _pageController.nextPage(
+                //             duration: const Duration(milliseconds: 500),
+                //             curve: Curves.ease);
+                //   },
+                // style: ElevatedButton.styleFrom(
+                //     animationDuration: const Duration(milliseconds: 500),
+                //     padding: _pageIndex == content.length - 1
+                //         ? const EdgeInsets.fromLTRB(20, 12, 12, 12)
+                //         : const EdgeInsets.fromLTRB(15, 12, 12, 12),
+                //     shape: _pageIndex == content.length - 1
+                //         ? const RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.only(
+                //                 topLeft: Radius.circular(25),
+                //                 bottomLeft: Radius.circular(25)))
+                //         : const CircleBorder(),
+                //     backgroundColor: const Color(0xff5A7BFA)),
+                // child: _pageIndex == content.length - 1
+                //     ? const Row(
+                //         children: [
+                //           Text('Lanjut',
+                //               style: TextStyle(
+                //                   fontWeight: FontWeight.w600,
+                //                   fontSize: 18,
+                //                   color: Color(0xfffefefe))),
+                //           SizedBox(width: 8),
+                //           Icon(
+                //             Icons.arrow_forward_ios,
+                //             size: 15,
+                //             color: Color(0xfffefefe),
+                //           )
+                //         ],
+                //       )
+                //       : const Icon(
+                //           Icons.arrow_forward_ios,
+                //           size: 20,
+                //           weight: 100,
+                //           color: Color(0xfffefefe),
+                //         ),
+                // ),
+                // _pageIndex == content.length - 1
+                //     ? const SizedBox()
+                //     : const SizedBox(
+                //         width: 40,
+                //       )
               ],
             ),
           ),
@@ -183,7 +247,7 @@ class DotIndicator extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
       child: CircleAvatar(
-        radius: 4,
+        radius: 4.5,
         backgroundColor: isActive
             ? const Color(0xff5A7BFA)
             : const Color(0xff444444).withOpacity(0.3),
@@ -212,7 +276,7 @@ class OnBoardContent extends StatelessWidget {
           height: 350,
           fit: BoxFit.cover,
         ),
-        const SizedBox(height: 50),
+        const SizedBox(height: 30),
         SizedBox(
           width: 300,
           child: Text(
@@ -226,7 +290,7 @@ class OnBoardContent extends StatelessWidget {
         ),
         const SizedBox(height: 30),
         SizedBox(
-          width: 380,
+          width: 360,
           child: Text(
             description,
             style: const TextStyle(fontSize: 16, color: Color(0xff444444)),
