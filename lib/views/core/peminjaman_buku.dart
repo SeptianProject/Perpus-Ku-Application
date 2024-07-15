@@ -57,7 +57,7 @@ class _PagePeminjamanScreenState extends State<PagePeminjamanScreen> {
                     ),
                     TextFormField(
                       controller: nameController,
-                      cursorColor: Color(0xff444444),
+                      cursorColor: const Color(0xff444444),
                       style: const TextStyle(
                         color: Color(0xff444444),
                         fontFamily: 'Poppins',

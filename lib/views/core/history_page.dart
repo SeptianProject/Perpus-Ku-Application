@@ -16,8 +16,8 @@ class _HistoryPageScreenState extends State<HistoryPageScreen> {
     return Scaffold(
       body: Center(
         child: books.isEmpty
-            ? Container(
-                child: const Column(
+            ? const SizedBox(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(

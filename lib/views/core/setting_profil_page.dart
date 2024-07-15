@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:perpus_digital/controllers/category_controller.dart';
-import 'package:perpus_digital/views/home_page.dart';
-import 'package:perpus_digital/views/library_page_list.dart';
-import 'package:perpus_digital/views/onboarding-screen/signin_page.dart';
+import 'package:perpus_digital/views/core/home_page.dart';
+import 'package:perpus_digital/views/core/library_page_list.dart';
+import 'package:perpus_digital/views/onboard/signin_page.dart';
 
 class SettingProfilePage extends StatefulWidget {
   const SettingProfilePage({super.key});
@@ -23,11 +23,11 @@ class _SettingProfilePageState extends State<SettingProfilePage> {
     return Scaffold(
       backgroundColor: const Color(0xfffefefe),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           child: Column(
             children: [
-              Container(
-                child: const Column(
+              const SizedBox(
+                child: Column(
                   children: [
                     SizedBox(height: 20),
                     Icon(
@@ -143,7 +143,7 @@ class _SettingProfilePageState extends State<SettingProfilePage> {
                           fontSize: 20,
                           fontWeight: FontWeight.w600),
                     ),
-                    Container(
+                    SizedBox(
                       height: 60,
                       child: ListView.builder(
                         itemCount: status.length,

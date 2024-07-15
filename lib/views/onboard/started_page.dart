@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/onboarding-screen/signin_page.dart';
-import 'package:perpus_digital/views/onboarding-screen/signup_page.dart';
+import 'package:perpus_digital/views/onboard/signin_page.dart';
+import 'package:perpus_digital/views/onboard/signup_page.dart';
 
 class StartedPage extends StatelessWidget {
   const StartedPage({super.key});
@@ -38,7 +38,7 @@ class StartedPage extends StatelessWidget {
               const Spacer(),
               Column(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 320,
                     height: 50,
                     child: ElevatedButton(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:perpus_digital/controllers/onboarding_controller.dart';
-import 'package:perpus_digital/views/onboarding-screen/signin_page.dart';
+import 'package:perpus_digital/views/onboard/signin_page.dart';
 
 class OnBoardingPageScreen extends StatefulWidget {
   const OnBoardingPageScreen({super.key});
@@ -79,7 +80,7 @@ class _OnBoardingPageScreenState extends State<OnBoardingPageScreen> {
                     });
                   },
                   itemBuilder: (context, index) => OnBoardContent(
-                        image: content[index].image,
+                        image: content[index].image.toString(),
                         title: content[index].title,
                         description: content[index].description,
                       ))),
@@ -269,12 +270,13 @@ class OnBoardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         const Spacer(),
-        Image.asset(
+        Lottie.asset(
           image,
-          height: 350,
-          fit: BoxFit.cover,
+          width: 350,
+          filterQuality: FilterQuality.high,
         ),
         const SizedBox(height: 30),
         SizedBox(

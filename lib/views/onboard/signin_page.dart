@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/home_page.dart';
-import 'package:perpus_digital/views/onboarding-screen/signup_page.dart';
+import 'package:perpus_digital/views/core/home_page.dart';
+import 'package:perpus_digital/views/onboard/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final _formKey = GlobalKey<FormState>();
 
-  bool _isSignin = false;
+  final bool _isSignin = false;
 
   final textFieldFocus = FocusNode();
   bool _obscured = true;
@@ -363,7 +363,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void _login() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );

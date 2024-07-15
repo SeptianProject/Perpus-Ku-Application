@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/onboarding-screen/onboarding_page.dart';
+import 'package:perpus_digital/views/onboard/onboarding_page.dart';
+import 'package:perpus_digital/views/splash/splash_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -9,16 +10,25 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
-} 
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override  
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(fontFamily: "Poppins"),
-        debugShowCheckedModeBanner: false,
-        home: const OnBoardingPageScreen());
+    return FutureBuilder(
+        future: Future.delayed(const Duration(seconds: 6)),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SplashScreen();
+          } else {
+            return MaterialApp(
+              theme: ThemeData(fontFamily: "Poppins"),
+              debugShowCheckedModeBanner: false,
+              home: const OnBoardingPageScreen(),
+            );
+          }
+        });
   }
 }
