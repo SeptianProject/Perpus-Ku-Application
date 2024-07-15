@@ -270,13 +270,12 @@ class OnBoardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: [
         const Spacer(),
-        Lottie.asset(
+        Image.asset(
           image,
-          width: 350,
-          filterQuality: FilterQuality.high,
+          height: 350,
+          fit: BoxFit.cover,
         ),
         const SizedBox(height: 30),
         SizedBox(

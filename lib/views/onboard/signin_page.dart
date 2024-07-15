@@ -11,10 +11,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // final FirebaseAuthServices _auth = FirebaseAuthServices();
-  // final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -35,7 +34,6 @@ class _LoginPageState extends State<LoginPage> {
 
   // @override
   // void dispose() {
-  //   _usernameController.dispose();
   //   _emailController.dispose();
   //   _passwordController.dispose();
   //   super.dispose();
@@ -53,6 +51,7 @@ class _LoginPageState extends State<LoginPage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
+          surfaceTintColor: Colors.transparent,
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -373,7 +372,7 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) => AlertDialog(
           icon: const Icon(Icons.warning_amber_outlined),
-          title: const Text('Login Gagal',
+          title: const Text('Login Gagal😭',
               style: TextStyle(
                 color: Color(0xff444444),
                 fontWeight: FontWeight.w600,
@@ -399,15 +398,33 @@ class _LoginPageState extends State<LoginPage> {
 
   showAlertDilaog(BuildContext context) {
     Widget button = TextButton(
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const HomePage()));
-        },
-        child: const Text("Baiklah"));
+      onPressed: () {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const HomePage()));
+      },
+      child: const Text(
+        "Baiklah",
+        style: TextStyle(
+          color: Color(0xff5A7BFA),
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
 
     AlertDialog alert = AlertDialog(
-      title: const Text("Kerja Bagus"),
-      content: const Text("Akun Anda Berhasil Login"),
+      backgroundColor: const Color(0xfffefefe),
+      title: const Text(
+        "Gokil Abiss",
+        style: TextStyle(
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      content: const Text(
+        "Akun Anda Berhasil Login",
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
       actions: [button],
     );
 

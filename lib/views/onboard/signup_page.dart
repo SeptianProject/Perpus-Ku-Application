@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:perpus_digital/views/core/home_page.dart';
 import 'package:perpus_digital/views/onboard/signin_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -36,19 +37,6 @@ class _RegisterPageState extends State<RegisterPage> {
     });
   }
 
-  // @override
-  // void dispose() {
-  //   _usernameController.dispose();
-  //   _emailController.dispose();
-  //   _passwordController.dispose();
-  //   super.dispose();
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -414,14 +403,28 @@ class _RegisterPageState extends State<RegisterPage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: const Text('Akun Gagal Didaftarkan'),
-              content: Text(e.toString()),
+              backgroundColor: Color(0xfffefefe),
+              title: const Text(
+                'Yahh Gagal',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              content: Text(
+                'Ada inputan yang salah : ${e.toString()}',
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
               actions: [
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: const Text('Baiklah'))
+                    child: const Text(
+                      'Baiklah',
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ))
               ],
             );
           });
@@ -431,17 +434,27 @@ class _RegisterPageState extends State<RegisterPage> {
   showAlertDilaog(BuildContext context) {
     Widget button = TextButton(
         onPressed: () {
-          Navigator.of(context).pushReplacement(
+          Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const LoginPage(),
+              builder: (context) => const HomePage(),
             ),
           );
         },
-        child: const Text("Baiklah"));
+        child: const Text(
+          "Baiklah",
+          style: TextStyle(fontWeight: FontWeight.w500),
+        ));
 
     AlertDialog alert = AlertDialog(
-      title: const Text("Kerja Bagus"),
-      content: const Text("Akun Berhasil Didaftarkan"),
+      backgroundColor: Color(0xfffefefe),
+      title: const Text(
+        "Gokil Abis",
+        style: TextStyle(fontWeight: FontWeight.w600),
+      ),
+      content: const Text(
+        "Keren Berhasil",
+        style: TextStyle(fontWeight: FontWeight.w500),
+      ),
       actions: [button],
     );
 
