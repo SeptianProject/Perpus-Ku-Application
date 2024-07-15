@@ -3,7 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/core/home_page.dart';
 import 'package:perpus_digital/views/onboard/signin_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -22,7 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final _formKey = GlobalKey<FormState>();
 
-  final bool _isSignup = false;
+  bool _isSignup = false;
 
   final textFieldFocus = FocusNode();
   bool _obscured = true;
@@ -436,7 +435,7 @@ class _RegisterPageState extends State<RegisterPage> {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const HomePage(),
+              builder: (context) => const LoginPage(),
             ),
           );
         },
