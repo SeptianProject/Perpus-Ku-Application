@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/onboard/signin_page.dart';
+import 'package:perpus_digital/views/auth/signin_page.dart';
 import 'package:perpus_digital/views/splash/splash_screen.dart';
 import 'firebase_options.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 1)),
+        future: Future.delayed(const Duration(seconds: 6)),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const SplashScreen();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/onboard/signin_page.dart';
-import 'package:perpus_digital/views/onboard/signup_page.dart';
+import 'package:perpus_digital/views/auth/signin_page.dart';
+import 'package:perpus_digital/views/auth/signup_page.dart';
 
 class StartedPage extends StatelessWidget {
   const StartedPage({super.key});

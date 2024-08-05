@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:perpus_digital/controllers/category_controller.dart';
-import 'package:perpus_digital/views/core/home_page.dart';
-import 'package:perpus_digital/views/core/library_page_list.dart';
-import 'package:perpus_digital/views/onboard/signin_page.dart';
+import 'package:perpus_digital/views/home/home_page.dart';
+import 'package:perpus_digital/views/home/library_page_list.dart';
+import 'package:perpus_digital/views/auth/signin_page.dart';
 
 class SettingProfilePage extends StatefulWidget {
   const SettingProfilePage({super.key});

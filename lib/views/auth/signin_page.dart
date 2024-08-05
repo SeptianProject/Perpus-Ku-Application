@@ -2,8 +2,13 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/core/home_page.dart';
-import 'package:perpus_digital/views/onboard/signup_page.dart';
+import 'package:perpus_digital/views/home/home_page.dart';
+import 'package:perpus_digital/views/auth/signup_page.dart';
+import 'package:perpus_digital/widgets/button/elevated_button.dart';
+import 'package:perpus_digital/widgets/button/styleform.dart';
+import 'package:perpus_digital/widgets/button/text_button.dart';
+import 'package:perpus_digital/widgets/text_field.dart';
+import 'package:perpus_digital/widgets/validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,7 +20,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -34,17 +39,17 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  // @override
-  // void dispose() {
-  //   _emailController.dispose();
-  //   _passwordController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,137 +94,45 @@ class _LoginPageState extends State<LoginPage> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        TextFormField(
-                          cursorColor: const Color(0xff444444),
-                          cursorWidth: 1,
-                          cursorOpacityAnimates: true,
-                          style: const TextStyle(
-                              color: Color(0xff444444),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                          keyboardType: TextInputType.emailAddress,
+                        RTextField(
                           controller: _emailController,
-                          validator: (valueEmail) {
-                            if (valueEmail!.isEmpty) {
-                              return 'Mohon isi email terlebih dulu';
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.never,
-                              isDense: true,
-                              filled: true,
-                              fillColor:
-                                  const Color(0xff5A7BFA).withOpacity(0.1),
-                              label: const Text(
-                                'Masukkan Email',
-                                style: TextStyle(
-                                  color: Color(0xff444444),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  borderSide: BorderSide.none),
-                              prefixIcon: const Icon(
-                                Icons.alternate_email,
-                                color: Color(0xff444444),
-                              )),
+                          keyboardType: TextInputType.emailAddress,
+                          validator: Validator.email,
+                          label: 'Masukkan email',
+                          preffixIcon: Icons.alternate_email_outlined,
+                          // suffixIcon: null,
                         ),
                         const SizedBox(height: 25),
-                        TextFormField(
-                          cursorColor: const Color(0xff444444),
-                          cursorWidth: 1,
-                          cursorOpacityAnimates: true,
+                        RTextField(
                           obscureText: _obscured,
-                          focusNode: textFieldFocus,
-                          keyboardType: TextInputType.visiblePassword,
                           controller: _passwordController,
-                          validator: (valuePass) {
-                            if (valuePass!.isEmpty) {
-                              return 'Mohon isi password terlebih dulu';
-                            } else if (valuePass.length < 5) {
-                              return 'Mohon isi lebih dari 5 karakter';
-                            }
-                            return null;
-                          },
-                          style: const TextStyle(
-                              color: Color(0xff444444),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                          decoration: InputDecoration(
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            isDense: true,
-                            filled: true,
-                            fillColor: const Color(0xff5A7BFA).withOpacity(0.1),
-                            label: const Text(
-                              'Password',
-                              style: TextStyle(
-                                color: Color(0xff444444),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide.none),
-                            prefixIcon: const Icon(
-                              Icons.lock_outline,
-                              color: Color(0xff444444),
-                            ),
-                            suffixIcon: GestureDetector(
-                              onTap: _toggleObscured,
-                              child: Icon(
-                                _obscured
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: const Color(0xff444444),
-                              ),
-                            ),
-                          ),
+                          keyboardType: TextInputType.visiblePassword,
+                          validator: Validator.password,
+                          label: 'Masukkan password',
+                          preffixIcon: Icons.lock_outline,
+                          // suffixIcon: GestureDetector(
+                          //     onTap: _toggleObscured,
+                          //     child: Icon(
+                          //       _obscured
+                          //           ? Icons.visibility
+                          //           : Icons.visibility_off,
+                          //       color: const Color(0xff444444),
+                          //       size: 22,
+                          //     )),
                         ),
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(height: 50),
-                ElevatedButton(
+                RButton(
                     onPressed: () {
                       _login();
                     },
-                    style: _isSignin
-                        ? ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xff5A7BFA),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 58, vertical: 12),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ))
-                        : ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xff5A7BFA),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 42, vertical: 12),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            )),
+                    style: _isSignin ? buttonStyle : buttonStyle,
                     child: _isSignin
-                        ? const SizedBox(
-                            width: 25,
-                            height: 25,
-                            child: CircularProgressIndicator(
-                              color: Colors.white38,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : const Text(
-                            'Masuk',
-                            style: TextStyle(
-                                color: Color(0xfffefefe),
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600),
-                          )),
+                        ? const CircularProgressIndicator()
+                        : textLogin),
                 const SizedBox(height: 60),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

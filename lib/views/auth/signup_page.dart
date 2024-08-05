@@ -3,7 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/onboard/signin_page.dart';
+import 'package:perpus_digital/views/auth/signin_page.dart';
+import 'package:perpus_digital/widgets/text_field.dart';
+import 'package:perpus_digital/widgets/validator.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -21,7 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final _formKey = GlobalKey<FormState>();
 
-  bool _isSignup = false;
+  final bool _isSignup = false;
 
   final textFieldFocus = FocusNode();
   bool _obscured = true;
@@ -82,132 +84,38 @@ class _RegisterPageState extends State<RegisterPage> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      TextFormField(
-                        cursorColor: const Color(0xff444444),
-                        cursorWidth: 1,
-                        cursorOpacityAnimates: true,
-                        style: const TextStyle(
-                            color: Color(0xff444444),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500),
-                        keyboardType: TextInputType.name,
+                      RTextField(
                         controller: _nameController,
-                        validator: (valueName) {
-                          if (valueName!.isEmpty) {
-                            return 'Mohon isi nama anda terlebih dulu';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            isDense: true,
-                            filled: true,
-                            fillColor: const Color(0xff5A7BFA).withOpacity(0.1),
-                            label: const Text(
-                              'Nama Anda',
-                              style: TextStyle(
-                                color: Color(0xff444444),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide.none),
-                            prefixIcon: const Icon(
-                              Icons.person_4,
-                              color: Color(0xff444444),
-                            )),
+                        keyboardType: TextInputType.name,
+                        validator: Validator.name,
+                        label: 'Masukkan nama anda',
+                        preffixIcon: Icons.person_4,
                       ),
                       const SizedBox(height: 20),
-                      TextFormField(
-                        cursorColor: const Color(0xff444444),
-                        cursorWidth: 1,
-                        cursorOpacityAnimates: true,
-                        style: const TextStyle(
-                            color: Color(0xff444444),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500),
-                        keyboardType: TextInputType.emailAddress,
+                      RTextField(
                         controller: _emailController,
-                        validator: (valueEmail) {
-                          if (valueEmail!.isEmpty) {
-                            return 'Mohon isi email terlebih dulu';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            isDense: true,
-                            filled: true,
-                            fillColor: const Color(0xff5A7BFA).withOpacity(0.1),
-                            label: const Text(
-                              'Masukkan Email',
-                              style: TextStyle(
-                                color: Color(0xff444444),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide.none),
-                            prefixIcon: const Icon(
-                              Icons.alternate_email,
-                              color: Color(0xff444444),
-                            )),
+                        keyboardType: TextInputType.emailAddress,
+                        validator: Validator.email,
+                        label: 'Masukkan email',
+                        preffixIcon: Icons.alternate_email_outlined,
                       ),
                       const SizedBox(height: 20),
-                      TextFormField(
-                        cursorColor: const Color(0xff444444),
-                        cursorWidth: 1,
-                        cursorOpacityAnimates: true,
+                      RTextField(
                         obscureText: _obscured,
-                        focusNode: textFieldFocus,
-                        style: const TextStyle(
-                            color: Color(0xff444444),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500),
-                        keyboardType: TextInputType.visiblePassword,
                         controller: _passwordController,
-                        validator: (valuePass) {
-                          if (valuePass!.isEmpty) {
-                            return 'Mohon isi password terlebih dulu';
-                          } else if (valuePass.length <= 6) {
-                            return 'Mohon isi lebih dari 6 karakter';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          isDense: true,
-                          filled: true,
-                          fillColor: const Color(0xff5A7BFA).withOpacity(0.1),
-                          label: const Text(
-                            'Password',
-                            style: TextStyle(
-                              color: Color(0xff444444),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide.none),
-                          prefixIcon: const Icon(
-                            Icons.lock_outline,
-                            color: Color(0xff444444),
-                          ),
-                          suffixIcon: GestureDetector(
+                        keyboardType: TextInputType.visiblePassword,
+                        validator: Validator.password,
+                        label: 'Masukkan password',
+                        preffixIcon: Icons.lock_outline,
+                        suffixIcon: GestureDetector(
                             onTap: _toggleObscured,
                             child: Icon(
                               _obscured
                                   ? Icons.visibility
                                   : Icons.visibility_off,
                               color: const Color(0xff444444),
-                            ),
-                          ),
-                        ),
+                              size: 22,
+                            )),
                       ),
                       const SizedBox(height: 50),
                       ElevatedButton(
@@ -402,7 +310,7 @@ class _RegisterPageState extends State<RegisterPage> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              backgroundColor: Color(0xfffefefe),
+              backgroundColor: const Color(0xfffefefe),
               title: const Text(
                 'Yahh Gagal',
                 style: TextStyle(
@@ -445,7 +353,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ));
 
     AlertDialog alert = AlertDialog(
-      backgroundColor: Color(0xfffefefe),
+      backgroundColor: const Color(0xfffefefe),
       title: const Text(
         "Gokil Abis",
         style: TextStyle(fontWeight: FontWeight.w600),

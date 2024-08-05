@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:perpus_digital/controllers/category_controller.dart';
 import 'package:perpus_digital/controllers/library_controller.dart';
-import 'package:perpus_digital/views/core/history_page.dart';
-import 'package:perpus_digital/views/core/library_page_list.dart';
-import 'package:perpus_digital/views/core/setting_profil_page.dart';
+import 'package:perpus_digital/views/home/history_page.dart';
+import 'package:perpus_digital/views/home/library_page_list.dart';
+import 'package:perpus_digital/views/home/setting_profil_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:perpus_digital/controllers/onboarding_controller.dart';
-import 'package:perpus_digital/views/onboard/signin_page.dart';
+import 'package:perpus_digital/views/auth/signin_page.dart';
 
 class OnBoardingPageScreen extends StatefulWidget {
   const OnBoardingPageScreen({super.key});
