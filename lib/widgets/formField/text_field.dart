@@ -8,8 +8,6 @@ class RTextField extends StatefulWidget {
   final IconData preffixIcon;
   final Widget? suffixIcon;
   final bool? obscureText;
-  final void Function()? onTap;
-  final Widget? iconChild;
   const RTextField({
     super.key,
     required this.controller,
@@ -19,8 +17,6 @@ class RTextField extends StatefulWidget {
     required this.preffixIcon,
     this.suffixIcon,
     this.obscureText,
-    this.onTap,
-    this.iconChild,
   });
 
   @override
@@ -60,10 +56,7 @@ class _RTextFieldState extends State<RTextField> {
           widget.preffixIcon,
           color: const Color(0xff444444),
         ),
-        // suffixIcon: GestureDetector(
-        //   onTap: widget.onTap,
-        //   child: widget.iconChild,
-        // ),
+        suffixIcon: widget.suffixIcon,
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/auth/signin_page.dart';
-import 'package:perpus_digital/views/auth/signup_page.dart';
+import 'package:perpus_digital/views/auth/login_view.dart';
+import 'package:perpus_digital/views/auth/register_view.dart';
 
 class StartedPage extends StatelessWidget {
   const StartedPage({super.key});
@@ -46,7 +46,7 @@ class StartedPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const LoginPage()));
+                                builder: (context) => const LoginView()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff5A7BFA),
@@ -72,7 +72,7 @@ class StartedPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const RegisterPage()));
+                                builder: (context) => const RegisterView()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:

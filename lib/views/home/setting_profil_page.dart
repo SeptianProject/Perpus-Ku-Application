@@ -5,7 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:perpus_digital/controllers/category_controller.dart';
 import 'package:perpus_digital/views/home/home_page.dart';
 import 'package:perpus_digital/views/home/library_page_list.dart';
-import 'package:perpus_digital/views/auth/signin_page.dart';
+import 'package:perpus_digital/views/auth/login_view.dart';
 
 class SettingProfilePage extends StatefulWidget {
   const SettingProfilePage({super.key});
@@ -210,7 +210,7 @@ class _SettingProfilePageState extends State<SettingProfilePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const LoginPage()));
+                              builder: (context) => const LoginView()));
                     },
                     child: const Text(
                       'Log Out',

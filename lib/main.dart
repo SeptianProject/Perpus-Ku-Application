@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/auth/signin_page.dart';
-import 'package:perpus_digital/views/splash/splash_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:perpus_digital/views/auth/login_view.dart';
+import 'package:perpus_digital/views/onboard/splash_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,15 +19,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 6)),
+        future: Future.delayed(const Duration(seconds: 0)),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const SplashScreen();
           } else {
             return MaterialApp(
-              theme: ThemeData(fontFamily: "Poppins"),
+              theme: ThemeData(fontFamily: GoogleFonts.poppins().fontFamily),
               debugShowCheckedModeBanner: false,
-              home: const LoginPage(),
+              home: const LoginView(),
             );
           }
         });

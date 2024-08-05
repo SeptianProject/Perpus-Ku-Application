@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:perpus_digital/controllers/onboarding_controller.dart';
-import 'package:perpus_digital/views/auth/signin_page.dart';
+import 'package:perpus_digital/views/auth/login_view.dart';
 
 class OnBoardingPageScreen extends StatefulWidget {
   const OnBoardingPageScreen({super.key});
@@ -44,7 +44,7 @@ class _OnBoardingPageScreenState extends State<OnBoardingPageScreen> {
                       ? Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const LoginPage()))
+                              builder: (context) => const LoginView()))
                       : null;
                 },
                 style: ButtonStyle(

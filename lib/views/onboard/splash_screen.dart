@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/splash/widget/lottie_splash.dart';
-import 'package:perpus_digital/views/splash/widget/text_splash.dart';
+import 'package:perpus_digital/widgets/splash/lottie_splash.dart';
+import 'package:perpus_digital/widgets/splash/text_splash.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

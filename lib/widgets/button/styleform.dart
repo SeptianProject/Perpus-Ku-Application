@@ -7,3 +7,11 @@ ButtonStyle buttonStyle = ElevatedButton.styleFrom(
     borderRadius: BorderRadius.circular(12),
   ),
 );
+
+ButtonStyle buttonStyleSign = ElevatedButton.styleFrom(
+  backgroundColor: const Color(0xff5A7BFA),
+  padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 12),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(12),
+  ),
+);
