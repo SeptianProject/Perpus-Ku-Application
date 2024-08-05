@@ -41,6 +41,7 @@ dependencies:
   lottie: ^3.1.2
   widget_and_text_animator: ^1.1.5
   flutter_animate: ^4.5.0
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
