@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:perpus_digital/controllers/category_controller.dart';
-import 'package:perpus_digital/views/home/home_page.dart';
-import 'package:perpus_digital/views/home/library_page_list.dart';
+import 'package:perpus_digital/models/category_model.dart';
+import 'package:perpus_digital/views/home/home_view.dart';
+import 'package:perpus_digital/views/home/library_list_view.dart';
 import 'package:perpus_digital/views/auth/login_view.dart';
 
 class SettingProfilePage extends StatefulWidget {

@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:perpus_digital/controllers/library_controller.dart';
-import 'package:perpus_digital/views/home/peminjaman_buku.dart';
-import 'package:perpus_digital/views/home/home_page.dart';
-import 'package:perpus_digital/views/home/library_page_pinjam.dart';
-import 'package:perpus_digital/views/home/setting_profil_page.dart';
+import 'package:perpus_digital/models/library_model.dart';
+import 'package:perpus_digital/views/home/library_form_view.dart';
+import 'package:perpus_digital/views/home/home_view.dart';
+import 'package:perpus_digital/views/home/library_view.dart';
+import 'package:perpus_digital/views/home/profil_view.dart';
 
 class LibraryScreenPage extends StatefulWidget {
   const LibraryScreenPage({super.key});

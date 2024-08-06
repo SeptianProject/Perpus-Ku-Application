@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/views/auth/register_view.dart';
 import 'package:perpus_digital/widgets/text/text_link.dart';
 import 'package:perpus_digital/widgets/text/text_small.dart';
 
 class RBlueContainer extends StatefulWidget {
   final double height;
-  const RBlueContainer({super.key, required this.height});
+  final void Function()? onPressed;
+  final String text;
+  final String textLink;
+  const RBlueContainer(
+      {super.key,
+      required this.height,
+      required this.onPressed,
+      required this.text,
+      required this.textLink});
 
   @override
   State<RBlueContainer> createState() => _BlueContainerState();
@@ -84,15 +91,10 @@ class _BlueContainerState extends State<RBlueContainer> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const TextSmall(text: 'Belum punya akun?', color: Colors.white),
+              TextSmall(text: widget.text, color: Colors.white),
               TextButton(
-                  onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterView(),
-                        ),
-                      ),
-                  child: const TextLink(text: 'Daftar Sekarang')),
+                  onPressed: widget.onPressed,
+                  child: TextLink(text: widget.textLink)),
             ],
           )
         ],

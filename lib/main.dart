@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:perpus_digital/views/auth/login_view.dart';
+import 'package:perpus_digital/views/home/home_view.dart';
 import 'package:perpus_digital/views/onboard/splash_screen.dart';
 import 'firebase_options.dart';
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               theme: ThemeData(fontFamily: GoogleFonts.poppins().fontFamily),
               debugShowCheckedModeBanner: false,
-              home: const LoginView(),
+              home: const HomePage(),
             );
           }
         });

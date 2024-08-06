@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:perpus_digital/views/auth/login_view.dart';
 import 'package:perpus_digital/views/auth/register_view.dart';
 
-class StartedPage extends StatelessWidget {
-  const StartedPage({super.key});
+class StartedView extends StatelessWidget {
+  const StartedView({super.key});
 
   @override
   Widget build(BuildContext context) {

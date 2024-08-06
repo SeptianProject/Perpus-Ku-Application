@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:perpus_digital/views/home/home_page.dart';
-import 'package:perpus_digital/views/home/library_page_list.dart';
-import 'package:perpus_digital/views/home/setting_profil_page.dart';
+import 'package:perpus_digital/views/home/home_view.dart';
+import 'package:perpus_digital/views/home/library_list_view.dart';
+import 'package:perpus_digital/views/home/profil_view.dart';
 
 class PageDipinjamScreen extends StatefulWidget {
   const PageDipinjamScreen({super.key});
