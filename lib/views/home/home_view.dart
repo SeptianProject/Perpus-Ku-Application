@@ -33,49 +33,7 @@ class _HomePageState extends State<HomePage> {
               color: const Color(0xff5A7BFA),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 120,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Icon(CupertinoIcons.person_crop_circle_fill,
-                              color: Colors.white, size: 50),
-                          const SizedBox(width: 10),
-                          const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Septian Asropik',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Text(
-                                'Siswa',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
-                          const Spacer(),
-                          IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HistoryPageScreen()));
-                              },
-                              icon: const Icon(Icons.history,
-                                  size: 30, color: Colors.white))
-                        ],
-                      ),
-                    ),
-                  ),
+                  const HomeProfile(),
                   const SizedBox(height: 40),
                   SizedBox(
                     child: Expanded(
@@ -451,5 +409,54 @@ class _HomePageState extends State<HomePage> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const SettingProfilePage()))));
+  }
+}
+
+class HomeProfile extends StatelessWidget {
+  const HomeProfile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 120,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Icon(CupertinoIcons.person_crop_circle_fill,
+                color: Colors.white, size: 50),
+            const SizedBox(width: 10),
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Septian Asropik',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  'Siswa',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
+                )
+              ],
+            ),
+            const Spacer(),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HistoryPageScreen()));
+                },
+                icon: const Icon(Icons.history, size: 30, color: Colors.white))
+          ],
+        ),
+      ),
+    );
   }
 }

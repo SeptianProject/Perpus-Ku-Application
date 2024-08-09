@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TextSub extends StatefulWidget {
+class TextSub extends StatelessWidget {
   final String text;
   const TextSub({super.key, required this.text});
 
   @override
-  State<TextSub> createState() => _TextSubState();
-}
-
-class _TextSubState extends State<TextSub> {
-  @override
   Widget build(BuildContext context) {
-    return Text(widget.text,
+    return Text(text,
         style: const TextStyle(
             color: Color(0xff444444),
             fontSize: 18,

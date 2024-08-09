@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:perpus_digital/widgets/text/text_link.dart';
+import 'package:perpus_digital/widgets/text/text_medium.dart';
 import 'package:perpus_digital/widgets/text/text_small.dart';
 
 class RBlueContainer extends StatefulWidget {
@@ -94,7 +94,7 @@ class _BlueContainerState extends State<RBlueContainer> {
               TextSmall(text: widget.text, color: Colors.white),
               TextButton(
                   onPressed: widget.onPressed,
-                  child: TextLink(text: widget.textLink)),
+                  child: TextMedium(text: widget.textLink)),
             ],
           )
         ],
